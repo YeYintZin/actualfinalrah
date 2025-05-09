@@ -26,10 +26,10 @@ public class Combinations extends Calculation {
 
     @Override
     boolean isValid() {
-        return pars.get(0) < 0 ||
-                pars.get(1) < 0 ||
-                pars.get(0) % 1 != 0 ||
-                pars.get(1) % 1 != 0 ||
+        return pars.get(0) > 0 ||
+                pars.get(1) >= 0 ||
+                pars.get(0) % 1 == 0 ||
+                pars.get(1) % 1 == 0 ||
                 pars.get(0) > pars.get(1);
     }
 

@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.yyz.Calculation;
 import org.yyz.Combinations;
+import org.yyz.Permutations;
 
 import java.util.*;
 
@@ -44,5 +45,15 @@ public class CombinationsTest {
         Calculation combinations = new Combinations(pars);
         combinations.calc();
         Assertions.assertEquals(-1, combinations.getResult());
+    }
+
+    @Test
+    public void test_RBiggerThanN() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(2.0);
+        pars.add(5.0);
+        Calculation comb = new Combinations(pars);
+        comb.calc();
+        Assertions.assertEquals(-1, comb.getResult());
     }
 }

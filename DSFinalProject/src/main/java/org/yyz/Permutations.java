@@ -10,7 +10,7 @@ public class Permutations extends Calculation {
 
     @Override
     public void calc() {
-        if (isValid()) {
+        if (!isValid()) {
             result = -1;
             return;
         }
@@ -25,11 +25,11 @@ public class Permutations extends Calculation {
 
     @Override
     boolean isValid() {
-        return pars.getFirst() < 0 ||
-                pars.getFirst() % 1 != 0 ||
-                pars.get(1) < 0 ||
-                pars.get(1) % 1 != 0 ||
-                pars.get(0) < pars.get(1);
+        return pars.getFirst() > 0 &&
+                pars.getFirst() % 1 == 0 &&
+                pars.get(1) >= 0 &&
+                pars.get(1) % 1 == 0 &&
+                pars.get(0) > pars.get(1);
     }
 
     @Override
