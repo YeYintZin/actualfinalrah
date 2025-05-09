@@ -3,6 +3,7 @@ package org.yyz;
 import java.util.List;
 
 public class Factorial extends Calculation {
+    double param;
 
     public Factorial(List<Double> pars) {
         super(pars);
@@ -13,6 +14,10 @@ public class Factorial extends Calculation {
         calc(pars.getFirst().intValue());
     }
 
+    /**
+     * Calculates n!
+     * @param num parameter
+     */
     public void calc(int num) {
         if (!isValid()) {
             result = -1;
@@ -27,8 +32,13 @@ public class Factorial extends Calculation {
             result *= i;
         }
         this.result = result;
+        param = num;
     }
 
+    /**
+     * Checks if n! is a real number
+     * @return
+     */
     @Override
     boolean isValid() {
         return pars.getFirst() >= 0 && pars.getFirst() % 1 == 0;
@@ -46,8 +56,8 @@ public class Factorial extends Calculation {
                     1 = 0!""";
         }
         StringBuilder s = new StringBuilder();
-        s.append(pars.getFirst().intValue());
-        for (int i = pars.getFirst().intValue() - 1; i > 0; i--) {
+        s.append((int) param);
+        for (int i = (int) param - 1; i > 0; i--) {
             s.append(" * ").append(i);
         }
         return s + " = " + (int) getResult();
@@ -65,6 +75,6 @@ public class Factorial extends Calculation {
 
     @Override
     public String toString() {
-        return pars.getFirst().intValue() + "! = " + (int) getResult();
+        return (int) param + "! = " + (int) getResult();
     }
 }

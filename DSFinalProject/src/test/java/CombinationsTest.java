@@ -56,4 +56,43 @@ public class CombinationsTest {
         comb.calc();
         Assertions.assertEquals(-1, comb.getResult());
     }
+
+    @Test
+    public void testToString() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        pars.add(2.0);
+        Calculation comb = new Combinations(pars);
+        String expected = "5C2 = 10";
+        comb.calc();
+        Assertions.assertEquals(expected, comb.toString());
+    }
+
+    @Test
+    public void testProcess() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        pars.add(2.0);
+        Calculation comb = new Combinations(pars);
+        String expected =
+                "Computes 5! divided by (5 - 2)!, which equals to 2! = 2, "
+                + "then multipliying by 1 / 2!, giving the final result of 10";
+        comb.calc();
+        Assertions.assertEquals(expected, comb.process());
+    }
+
+    @Test
+    public void testAllCalc() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        pars.add(2.0);
+        Calculation comb = new Combinations(pars);
+        String expected = "Full process: \n"
+                        + "Computes 5! divided by (5 - 2)! = 20\n"
+                        + "2 * 1 = 2\n"
+                        + "Computes 5! divided by (5 - 2)!, which equals to 2! = 2, "
+                        + "then multipliying by 1 / 2!, giving the final result of 10";
+        comb.calc();
+        Assertions.assertEquals(expected, comb.allCalc());
+    }
 }

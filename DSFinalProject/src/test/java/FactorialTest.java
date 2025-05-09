@@ -35,7 +35,17 @@ public class FactorialTest {
     }
 
     @Test
-    public void testFactorialProcess() {
+    public void testToString() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        Calculation fac = new Factorial(pars);
+        String expected = "5! = 120";
+        fac.calc();
+        Assertions.assertEquals(expected, fac.toString());
+    }
+
+    @Test
+    public void testProcess() {
         List<Double> pars = new ArrayList<>();
         pars.add(5.0);
         Calculation fac = new Factorial(pars);
@@ -43,5 +53,15 @@ public class FactorialTest {
         fac.calc();
         String result = fac.process();
         Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testAllCalc() {
+        List<Double> pars = new ArrayList<>();
+        pars.add(5.0);
+        Calculation fac = new Factorial(pars);
+        String expected = "5 * 4 * 3 * 2 * 1 = 120";
+        fac.calc();
+        Assertions.assertEquals(expected, fac.allCalc());
     }
 }

@@ -59,4 +59,9 @@ public class Permutations extends Calculation {
         s.append(process());
         return s.toString();
     }
+
+    @Override
+    public String toString() {
+        return pars.get(0).intValue() + "P" + pars.get(1).intValue() + " = " + (int) result;
+    }
 }
