@@ -1,12 +1,10 @@
 package org.yyz;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public abstract class Table {
-    private List<String> header;
-    private Map<Double, List<Double>> datas;
+    protected List<String> header;
+    protected Map<Double, List<Double>> datas;
 
     public Table() {
 
@@ -31,21 +29,21 @@ public abstract class Table {
 
     @Override
     public String toString() {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (String header : header) {
-            result += header + ", ";
+            result.append(header).append(", ");
         }
-        result = result.substring(0, result.length() - 2);
-        result += "\n";
+        result = new StringBuilder(result.substring(0, result.length() - 2));
+        result.append("\n");
         for (Double key : datas.keySet()) {
-            result += key + ", ";
+            result.append(key).append(", ");
             for (Double value : datas.get(key)) {
-                result += value + ", ";
+                result.append(value).append(", ");
             }
-            result = result.substring(0, result.length() - 2);
-            result += "\n";
+            result = new StringBuilder(result.substring(0, result.length() - 2));
+            result.append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     public List<String> getHeader() {

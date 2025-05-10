@@ -36,14 +36,18 @@ public class Factorial extends Calculation {
     }
 
     /**
-     * Checks if n! is a real number
-     * @return
+     * Checks if n! is a natural number
+     * @return boolean if the number is valid
      */
     @Override
     boolean isValid() {
         return pars.getFirst() >= 0 && pars.getFirst() % 1 == 0;
     }
 
+    /**
+     * Shows process of calculations
+     * @return String containing full process
+     */
     @Override
     public String process() {
         if (pars.getFirst() == 0) {
@@ -63,16 +67,28 @@ public class Factorial extends Calculation {
         return s + " = " + (int) getResult();
     }
 
+    /**
+     * Explains factorial
+     * @return explaination
+     */
     @Override
     public String explain() {
         return "n!, multiplication of n by n - 1, until n - 1 = 1.";
     }
 
+    /**
+     * Show processes for all calculations
+     * @return all calculations
+     */
     @Override
     public String allCalc() {
         return process();
     }
 
+    /**
+     * Special toString displaying result
+     * @return (n! = x)
+     */
     @Override
     public String toString() {
         return (int) param + "! = " + (int) getResult();
