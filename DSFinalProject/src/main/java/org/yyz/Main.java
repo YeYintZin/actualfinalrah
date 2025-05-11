@@ -9,7 +9,8 @@ public class Main {
 
     public static void menu() {
         boolean exit = false;
-        String menu = "Statistics Calculator:\n"
+        String menu = "\n"
+                + "Statistics Calculator:\n"
                 + "1. Factorial\n"
                 + "2. Permutations\n"
                 + "3. Combinations\n"
@@ -70,15 +71,15 @@ public class Main {
                 + "4. AllCalc\n"
                 + "5. Exit\n";
         calculation.calc();
+        if (calculation.result == -1) {
+            System.out.println("Error in parameters!" + "\n");
+            return;
+        }
         while (!subexit) {
             System.out.println(submenu);
             switch (scanInt()) {
                 case 1:
-                    if (calculation.result == -1) {
-                        System.out.println("Wrong parameters!");
-                    } else {
-                        System.out.println(calculation);
-                    }
+                    System.out.println(calculation);
                 break;
                 case 2:
                     System.out.println(calculation.process());

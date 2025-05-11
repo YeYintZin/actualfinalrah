@@ -7,6 +7,7 @@ public class Permutations extends Calculation {
     public Permutations(List<Double> pars) {
         super(pars);
         this.name = "Permutations";
+        this.degreeOfComplexity = 2;
     }
 
     @Override
@@ -14,6 +15,11 @@ public class Permutations extends Calculation {
         calc(pars.getFirst(), pars.get(1));
     }
 
+    /**
+     * Calculates nPr
+     * @param n Total
+     * @param r Ways arranged in
+     */
     public void calc(double n, double r) {
         if (!isValid()) {
             result = -1;
@@ -28,6 +34,10 @@ public class Permutations extends Calculation {
         result = numerator.result / denominator.result;
     }
 
+    /**
+     * Checks if nPr is valid, meaning both n and r are natural numbers, n != 0, and n > r
+     * @return true if valid
+     */
     @Override
     boolean isValid() {
         return pars.getFirst() > 0 &&
@@ -37,6 +47,10 @@ public class Permutations extends Calculation {
                 pars.get(0) > pars.get(1);
     }
 
+    /**
+     * Shows process of calculations
+     * @return String containing full process
+     */
     @Override
     public String process() {
         return "Computes "
@@ -46,6 +60,10 @@ public class Permutations extends Calculation {
                 + (int) result;
     }
 
+    /**
+     * Explains permutations
+     * @return explanation
+     */
     @Override
     public String explain() {
         return "nPr: " +
@@ -53,6 +71,10 @@ public class Permutations extends Calculation {
                 "n!/(n-r)!";
     }
 
+    /**
+     * Show processes for all calculations
+     * @return all calculations
+     */
     @Override
     public String allCalc() {
         StringBuilder s = new StringBuilder();
@@ -65,6 +87,10 @@ public class Permutations extends Calculation {
         return s.toString();
     }
 
+    /**
+     * Special toString displaying result
+     * @return (nPr = x)
+     */
     @Override
     public String toString() {
         return pars.get(0).intValue() + "P" + pars.get(1).intValue() + " = " + (int) result;

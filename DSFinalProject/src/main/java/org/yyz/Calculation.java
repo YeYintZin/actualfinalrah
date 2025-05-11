@@ -6,6 +6,7 @@ public abstract class Calculation {
     protected List<Calculation> calculations = new ArrayList<>();
     protected double result;
     protected String name;
+    protected int degreeOfComplexity;
 
     public abstract void calc();
     abstract boolean isValid();

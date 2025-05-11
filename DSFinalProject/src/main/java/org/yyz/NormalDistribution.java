@@ -1,12 +1,15 @@
 package org.yyz;
 
 import java.util.List;
+import java.util.Objects;
 
-public class BasicStat implements TableCalc {
+public class NormalDistribution implements TableCalc {
     private Table table;
+    private int degreeOfComplexity;
 
-    public BasicStat(Table table) {
+    public NormalDistribution(Table table) {
         this.table = table;
+        this.degreeOfComplexity = 4;
     }
 
     @Override
@@ -38,7 +41,7 @@ public class BasicStat implements TableCalc {
         return Math.sqrt(result / (column.size() - 1));
     }
 
-    public double normalDistributionPDF(String name, double x) {
+    public double normalDistributionCalc(String name, double x) {
         double sd = standardDeviation(name);
         double base = 1 / (sd * Math.sqrt(2 * Math.PI));
         double exponent = - Math.pow(x - mean(name), 2) / (2 * Math.pow(sd, 2));
@@ -46,4 +49,20 @@ public class BasicStat implements TableCalc {
         return base * Math.pow(Math.E, exponent);
     }
 
+    @Override
+    public String toString() {
+        return "NormalDistribution{}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        NormalDistribution that = (NormalDistribution) o;
+        return degreeOfComplexity == that.degreeOfComplexity && Objects.equals(table, that.table);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(table, degreeOfComplexity);
+    }
 }

@@ -8,6 +8,7 @@ public class Factorial extends Calculation {
     public Factorial(List<Double> pars) {
         super(pars);
         this.name = "Factorial";
+        this.degreeOfComplexity = 1;
     }
 
     @Override
@@ -70,7 +71,7 @@ public class Factorial extends Calculation {
 
     /**
      * Explains factorial
-     * @return explaination
+     * @return explanation
      */
     @Override
     public String explain() {
@@ -83,7 +84,7 @@ public class Factorial extends Calculation {
      */
     @Override
     public String allCalc() {
-        return process();
+        return "Full process:\n" + process();
     }
 
     /**

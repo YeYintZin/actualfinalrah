@@ -6,6 +6,7 @@ public class Combinations extends Calculation {
     public Combinations(List<Double> pars) {
         super(pars);
         this.name = "Combinations";
+        this.degreeOfComplexity = 2;
     }
 
     @Override
@@ -13,20 +14,29 @@ public class Combinations extends Calculation {
         calc(pars.get(0).intValue(), pars.get(1).intValue());
     }
 
+    /**
+     * Calculates nCr
+     * @param n Total
+     * @param r Ways arranged in
+     */
     public void calc(int n, int r) {
         if (!isValid()) {
             result = -1;
             return;
         }
-        Calculation perm = new Permutations(pars);
-        Calculation factor = new Factorial(pars.subList(1, pars.size()));
-        perm.calc();
-        factor.calc();
+        Permutations perm = new Permutations(pars);
+        Factorial factor = new Factorial(pars.subList(1, pars.size()));
+        perm.calc(n, r);
+        factor.calc(r);
         calculations.add(perm);
         calculations.add(factor);
         result = (1 / factor.result) * perm.result;
     }
 
+    /**
+     * Checks if nCr is valid, meaning both n and r are natural numbers, n != 0, and n > r
+     * @return true if valid
+     */
     @Override
     boolean isValid() {
         return pars.getFirst() > 0 &&
@@ -36,6 +46,10 @@ public class Combinations extends Calculation {
                 pars.get(0) > pars.get(1);
     }
 
+    /**
+     * Shows process of calculations
+     * @return String containing full process
+     */
     @Override
     public String process() {
         return "Computes "
@@ -48,6 +62,10 @@ public class Combinations extends Calculation {
                 + (int) result;
     }
 
+    /**
+     * Explains permutations
+     * @return explanation
+     */
     @Override
     public String explain() {
         return "nCr: " +
@@ -55,6 +73,10 @@ public class Combinations extends Calculation {
                 "n!/(n-r)! * 1 / r!";
     }
 
+    /**
+     * Show processes for all calculations
+     * @return all calculations
+     */
     @Override
     public String allCalc() {
         StringBuilder s = new StringBuilder();
@@ -67,23 +89,12 @@ public class Combinations extends Calculation {
         return s.toString();
     }
 
+    /**
+     * Special toString displaying result
+     * @return (nPr = x)
+     */
     @Override
     public String toString() {
         return pars.get(0).intValue() + "C" + pars.get(1).intValue() + " = " + (int) result;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        return super.equals(o);
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public double getResult() {
-        return super.getResult();
     }
 }
