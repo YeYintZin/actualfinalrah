@@ -31,6 +31,10 @@ public class NormalDistribution implements TableCalc {
         return result / column.size();
     }
 
+    public double zScore(String name, double x) {
+        return (x - mean(name)) / standardDeviation(name);
+    }
+
     public double standardDeviation(String name) {
         List<Double> column = getColumn(name);
         double result = 0;
@@ -44,7 +48,7 @@ public class NormalDistribution implements TableCalc {
     public double normalDistributionCalc(String name, double x) {
         double sd = standardDeviation(name);
         double base = 1 / (sd * Math.sqrt(2 * Math.PI));
-        double exponent = - Math.pow(x - mean(name), 2) / (2 * Math.pow(sd, 2));
+        double exponent = - Math.pow(zScore(name, x), 2) / 2;
         System.out.println(mean(name) + standardDeviation(name) + "\t" + exponent + "\t" + base);
         return base * Math.pow(Math.E, exponent);
     }
