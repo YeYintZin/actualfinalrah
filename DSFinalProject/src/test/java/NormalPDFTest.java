@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.yyz.Calculation;
 import org.yyz.InputTable;
 import org.yyz.NormalDistribution;
 import org.yyz.Table;
@@ -34,7 +33,7 @@ public class NormalPDFTest {
     public void testNormal() {
         Table table = new InputTable("src/test/resources/table.csv");
         NormalDistribution nd = new NormalDistribution(table);
-        double result = nd.normalDistributionCalc("f(x)", 4);
+        double result = nd.calc("f(x)", 4);
         Assertions.assertEquals(0.03557017048218384, result);
     }
 }

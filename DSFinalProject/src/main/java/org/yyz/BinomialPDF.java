@@ -49,6 +49,10 @@ public class BinomialPDF extends Calculation {
                 pars.get(2) <= 1;
     }
 
+    /**
+     * Shows process of calculations
+     * @return String containing full process
+     */
     @Override
     public String process() {
         return pars.getFirst().intValue() + "C" + pars.get(1).intValue()
@@ -57,11 +61,19 @@ public class BinomialPDF extends Calculation {
             + (1 - pars.get(2)) + "^" + (int) (pars.get(0) - pars.get(1));
     }
 
+    /**
+     * Explains permutations
+     * @return explanation
+     */
     @Override
     public String explain() {
         return "Returns the probability of x successes in a total of n trials, based on probability p";
     }
 
+    /**
+     * Show processes for all calculations
+     * @return all calculations
+     */
     @Override
     public String allCalc() {
         StringBuilder s = new StringBuilder();
@@ -74,6 +86,10 @@ public class BinomialPDF extends Calculation {
         return s.toString();
     }
 
+    /**
+     * Special toString displaying result
+     * @return (nCr * p^n * (1 - p)^(n - r)= num)
+     */
     @Override
     public String toString() {
         return pars.getFirst().intValue()

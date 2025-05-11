@@ -1,7 +1,7 @@
 package org.yyz;
 import java.util.*;
 
-public abstract class Calculation {
+public abstract class Calculation implements Comparable<Calculation> {
     protected List<Double> pars;
     protected List<Calculation> calculations = new ArrayList<>();
     protected double result;
@@ -14,8 +14,16 @@ public abstract class Calculation {
     public abstract String explain();
     public abstract String allCalc();
 
+    public Calculation() {
+    }
+
     public Calculation(List<Double> pars) {
         this.pars = pars;
+    }
+
+    @Override
+    public int compareTo(Calculation o) {
+        return this.degreeOfComplexity - o.degreeOfComplexity;
     }
 
     @Override
