@@ -6,18 +6,23 @@ public class Permutations extends Calculation {
 
     public Permutations(List<Double> pars) {
         super(pars);
+        this.name = "Permutations";
     }
 
     @Override
     public void calc() {
+        calc(pars.getFirst(), pars.get(1));
+    }
+
+    public void calc(double n, double r) {
         if (!isValid()) {
             result = -1;
             return;
         }
-        Calculation numerator = new Factorial(pars);
+        Factorial numerator = new Factorial(pars);
         Factorial denominator = new Factorial(pars);
-        numerator.calc();
-        denominator.calc((int) (pars.get(0) - pars.get(1)));
+        numerator.calc((int) n);
+        denominator.calc((int) (n - r));
         calculations.add(numerator);
         calculations.add(denominator);
         result = numerator.result / denominator.result;

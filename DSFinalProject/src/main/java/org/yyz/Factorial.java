@@ -7,6 +7,7 @@ public class Factorial extends Calculation {
 
     public Factorial(List<Double> pars) {
         super(pars);
+        this.name = "Factorial";
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.List;
 public class Combinations extends Calculation {
     public Combinations(List<Double> pars) {
         super(pars);
+        this.name = "Combinations";
     }
 
     @Override
@@ -49,7 +50,9 @@ public class Combinations extends Calculation {
 
     @Override
     public String explain() {
-        return "";
+        return "nCr: " +
+                "returns Combinations, the amount of combinations possible, with order not mattering\n" +
+                "n!/(n-r)! * 1 / r!";
     }
 
     @Override

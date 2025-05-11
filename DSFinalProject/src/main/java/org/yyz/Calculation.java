@@ -5,6 +5,7 @@ public abstract class Calculation {
     protected List<Double> pars;
     protected List<Calculation> calculations = new ArrayList<>();
     protected double result;
+    protected String name;
 
     public abstract void calc();
     abstract boolean isValid();
