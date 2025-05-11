@@ -8,8 +8,11 @@ public class InputTable extends Table {
     private String path;
 
     public InputTable(String path) {
+        super();
+        this.path = path;
         try (Scanner sc = new Scanner(new File(path))) {
-            setHeader(Arrays.stream(sc.nextLine().split(",")).toList());
+            header = new ArrayList<>(Arrays.asList(sc.nextLine().split(",")));
+            header.set(0, header.get(0).substring(1));
             Map<Double, List<Double>> map = new LinkedHashMap<>();
             while (sc.hasNextLine()) {
                 String[] strings = sc.nextLine().split(",");
@@ -20,7 +23,6 @@ public class InputTable extends Table {
         } catch (IOException e) {
             System.out.println("Error: " + e.getMessage());
         }
-        this.path = path;
     }
 
     public List<Double> strArToDbList(String[] strings) {
